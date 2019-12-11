@@ -16,5 +16,13 @@ namespace CAx_KeyManager
         {
             InitializeComponent();
         }
+
+        private void AddName_Button_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Owner_Input.Text))
+            // Gets values that have been entered in the textboxes
+            // dataGrid_Keys.DataSource = DataManager.BindingKeyList
+            // Check out static classes
+        }
     }
 }
