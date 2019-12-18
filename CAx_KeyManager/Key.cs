@@ -8,32 +8,52 @@ namespace CAx_KeyManager
 {
     class Key
     {
-        public string Key_OwnerName;
-        public string Key_RoomID;
-        public string Suffix_Name;
+        public string OwnerName;
+        public string RoomID;
+        public static int ID_Number = 0;
+
+        public string NameSuffix;
+
+        public char[] InvalidCharacters = { 'a', 'e', 'i', 'o', 'u', 'ä', 'ö', 'ü', 'ß' };
         
+        public string KeyID;
+
         public Key(string _owner, string _room)
         {
-            Key_OwnerName = _owner;
-            Key_RoomID = _room;
-            
+            // Assigning Owner name to Key_OwnerName
+            OwnerName = _owner;
+
+            // Assigning Room name to Key_RoomID
+            RoomID = _room;
+
+            // Each key gets a key number depending on when it's added
+            ID_Number += 1;
         }
 
-        static string Get_SuffixName(string _name)
+        public string Get_SuffixName(string _name)
         {
-            string Modified_SuffixName;
-            foreach (char c in _name)
+            string Modified_SuffixName = _name;
+
+            // Remove 'a','e','i','o','u','ä','ö','ü','ß' from the name
+            foreach (char character in InvalidCharacters)
             {
-                switch (c)
+                if (Modified_SuffixName.Contains(character))
                 {
-                    case a:
-                        Key_OwnerName
+                    string invalidChar = character.ToString();
 
-
+                    Modified_SuffixName = Modified_SuffixName.Replace(invalidChar, "");
                 }
             }
-
             return Modified_SuffixName;
+        }
+
+        public string GenerateID(string _roomID, string _modifiedName, int _keyIDNumber)
+        {
+            string _keyID;
+
+            // Prepping the KeyID
+            _keyID = _roomID + "_" + _modifiedName + "_" + _keyIDNumber;
+            return _keyID;
         }
     }
 }

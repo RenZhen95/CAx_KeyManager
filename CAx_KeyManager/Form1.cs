@@ -19,10 +19,18 @@ namespace CAx_KeyManager
 
         private void AddName_Button_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Owner_Input.Text))
+            //if (string.IsNullOrEmpty(Owner_Input.Text))
             // Gets values that have been entered in the textboxes
             // dataGrid_Keys.DataSource = DataManager.BindingKeyList
             // Check out static classes
         }
+
+        // Create a KeyManager class that contains a static list 
+        //  Implement methods to add and delete key
+        //      Think of the conditions for a key to be added (no empty fields for example)
+        //  Object created when user inputs name and room
+
+        // Create a Key class that takes in name and user
+        //  Returns a KeyID of a specific formats
     }
 }
