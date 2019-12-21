@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CAx_KeyManager
 {
-    class KeyStorage
+    public class KeyStorage
     {
         public string KeyOwnerName;
         public string KeyRoomID;
