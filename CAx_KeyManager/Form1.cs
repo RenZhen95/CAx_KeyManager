@@ -19,8 +19,11 @@ namespace CAx_KeyManager
 
         private void AddName_Button_Click(object sender, EventArgs e)
         {
-            KeyFactory newKey = new KeyFactory("Madison", "MB264");
-            newKey.ReturnKeyID();
+            KeyFactory newKey = new KeyFactory("", "");
+            //System.Diagnostics.Debug.WriteLine(newKey.ReturnKeyID());
+
+            KeyStorage AddKeyInfo = new KeyStorage("Madison", "MB264", newKey.KeyID);
+
             //if (string.IsNullOrEmpty(Owner_Input.Text))
             // Gets values that have been entered in the textboxes
             // dataGrid_Keys.DataSource = DataManager.BindingKeyList

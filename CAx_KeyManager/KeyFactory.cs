@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CAx_KeyManager
 {
@@ -18,14 +19,32 @@ namespace CAx_KeyManager
 
         public KeyFactory(string _owner, string _room)
         {
-            // Each key gets a key number depending on when it's added
-            ID_Number += 1;
+            // First check that no empty string has been input
+            if (string.IsNullOrEmpty(_owner) && string.IsNullOrEmpty(_room))
+            {
+                MessageBox.Show("Please enter an owner and a room name.");
+                return;
+            }
+            else if (string.IsNullOrEmpty(_owner))
+            {
+                MessageBox.Show("Please enter an owner name.");
+                return;
+            }
+            else if (string.IsNullOrEmpty(_room))
+            {
+                MessageBox.Show("Please enter a room name.");
+            }
+            else
+            {
+                // Each key gets a key number depending on when it's added
+                ID_Number += 1;
 
-            // Generating the modified name, taking off the characters we don't want
-            NameSuffix = Generate_SuffixName(_owner);
+                // Generating the modified name, taking off the characters we don't want
+                NameSuffix = Generate_SuffixName(_owner);
 
-            // Generating the KeyID
-            KeyID = GenerateID(_room, NameSuffix, ID_Number);
+                // Generating the KeyID
+                KeyID = GenerateID(_room, NameSuffix, ID_Number);
+            }
         }
 
         private string Generate_SuffixName(string _name)
