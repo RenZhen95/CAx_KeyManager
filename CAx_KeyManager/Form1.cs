@@ -17,14 +17,31 @@ namespace CAx_KeyManager
             InitializeComponent();
         }
 
+        BindingList<Key> KeyContainer;
+        private void InitializeKeyContainer()
+        {
+            // Create the new BindingList of Key type.
+            KeyContainer = new BindingList<Key>();
+
+            // Allow new parts to be added, but not removed once committed.        
+            KeyContainer.AllowNew = true;
+            KeyContainer.AllowRemove = false;
+
+            // Raise ListChanged events when new parts are added.
+            KeyContainer.RaiseListChangedEvents = true;
+
+            // Do not allow parts to be edited.
+            KeyContainer.AllowEdit = false;
+        }
+            
         private void AddName_Button_Click(object sender, EventArgs e)
         {
             KeyFactory newKey = new KeyFactory("Madison", "MB264");
             //System.Diagnostics.Debug.WriteLine(newKey.ReturnKeyID());
 
-            KeyStorage AddKeyInfo = new KeyStorage("Madison", "MB264", newKey.KeyID);
+            Key AddKeyInfo = new Key("Madison", "MB264", newKey.KeyID);
 
-            DataGrid_Key.DataSource = AddKeyInfo.KeyContainer[0];
+            //DataGrid_Key.DataSource = AddKeyInfo.KeyContainer[0];
             //dataGrid_Keys.DataSource = DataManager.BindingKeyList
             // Check out static classes
         }

@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace CAx_KeyManager
 {
-    public class KeyStorage
+    public class Key
     {
         public string KeyOwnerName;
         public string KeyRoomID;
         public string KeyID;
         
-        public List<List<string>> KeyContainer = new List<List<string>>();
-
-        public KeyStorage(string _owner, string _roomID, string _keyID)
+        public Key(string _owner, string _roomID, string _keyID)
         {
             // Assigning the user input string (owner name) to KeyOwnerName
             KeyOwnerName = _owner;
@@ -24,9 +22,8 @@ namespace CAx_KeyManager
 
             // Assigning the user input string (keyID) to KeyID
             KeyID = _keyID;
-
-            // Storing all the input data pertaining to a key in the List of Lists KeyContainer
-            KeyContainer.Add(new List<string> {KeyOwnerName, KeyRoomID, KeyID});
         }
+
+        public Key() { }
     }
 }
