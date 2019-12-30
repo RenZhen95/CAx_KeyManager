@@ -8,10 +8,14 @@ namespace CAx_KeyManager
 {
     public class Key
     {
-        public string KeyOwnerName;
-        public string KeyRoomID;
-        public string KeyID;
-        
+        private string ownerName;
+        private string roomID;
+        private string keyID;
+
+        // Null constructor
+        public Key() { }
+
+        // Constructor taking user input arguments 
         public Key(string _owner, string _roomID, string _keyID)
         {
             // Assigning the user input string (owner name) to KeyOwnerName
@@ -24,6 +28,23 @@ namespace CAx_KeyManager
             KeyID = _keyID;
         }
 
-        public Key() { }
+        // Getters and setters for the key attributes
+        public string KeyOwnerName
+        {
+            get { return ownerName; }
+            set { ownerName = value; }
+        }
+
+        public string KeyRoomID
+        {
+            get { return roomID; }
+            set { roomID = value; }
+        }
+
+        public string KeyID
+        {
+            get { return keyID; }
+            set { keyID = value; }
+        }
     }
 }
