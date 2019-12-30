@@ -11,29 +11,39 @@ namespace CAx_KeyManager
     {
         public static int ID_Number = 0;
 
-        public string NameSuffix;
+        public string nameSuffix;
+        public string keyID;
+        public string owner;
+        public string room;
 
         public string[] InvalidCharacters = { "a", "e", "i", "o", "u", "ä", "ö", "ü", "ß" };
-        
-        public string KeyID;
 
         public KeyFactory(string _owner, string _room)
         {
+            Owner = _owner;
+            Room = _room;
+
             // First check that no empty string has been input
-            if (string.IsNullOrEmpty(_owner) && string.IsNullOrEmpty(_room))
+            if (string.IsNullOrEmpty(Owner) || string.IsNullOrEmpty(Room))
             {
-                MessageBox.Show("Please enter an owner and a room name.");
+                if (string.IsNullOrEmpty(Owner) && string.IsNullOrEmpty(Room))
+                {
+                    MessageBox.Show("Please enter an owner and a room name.");
+                    System.Diagnostics.Debug.WriteLine(KeyID);
+                }
+                else if (string.IsNullOrEmpty(Owner))
+                {
+                    MessageBox.Show("Please enter an owner name.");
+                    System.Diagnostics.Debug.WriteLine(KeyID);
+                }
+                else if (string.IsNullOrEmpty(Room))
+                {
+                    MessageBox.Show("Please enter a room name.");
+                    System.Diagnostics.Debug.WriteLine(KeyID);
+                }
                 return;
             }
-            else if (string.IsNullOrEmpty(_owner))
-            {
-                MessageBox.Show("Please enter an owner name.");
-                return;
-            }
-            else if (string.IsNullOrEmpty(_room))
-            {
-                MessageBox.Show("Please enter a room name.");
-            }
+            // Everything is good...
             else
             {
                 // Each key gets a key number depending on when it's added
@@ -44,9 +54,36 @@ namespace CAx_KeyManager
 
                 // Generating the KeyID
                 KeyID = GenerateID(_room, NameSuffix, ID_Number);
+                System.Diagnostics.Debug.WriteLine(KeyID);
             }
         }
 
+        // Getters and Setters
+        public string NameSuffix
+        {
+            get { return nameSuffix; }
+            set { nameSuffix = value; }
+        }
+
+        public string KeyID
+        {
+            get { return keyID; }
+            set { keyID = value; }
+        }
+
+        public string Owner
+        {
+            get { return owner; }
+            set { owner = value; }
+        }
+
+        public string Room
+        {
+            get { return room; }
+            set { room = value; }
+        }
+
+        // Methods to generate KeyID
         private string Generate_SuffixName(string _name)
         {
             string Modified_SuffixName = _name;
@@ -56,7 +93,7 @@ namespace CAx_KeyManager
             {
                 if (Modified_SuffixName.Contains(character))
                 {
-                    Modified_SuffixName = Modified_SuffixName.Replace(character, "");
+                    Modified_SuffixName = Modified_SuffixName.Replace(character, String.Empty);
                 }
             }
             return Modified_SuffixName;
@@ -69,17 +106,6 @@ namespace CAx_KeyManager
             // Prepping the KeyID
             _keyID = _roomID + "_" + _modifiedName + "_" + _keyIDNumber;
             return _keyID;
-        }
-
-        public int ReturnKeyIDNumber()
-        {
-            return ID_Number;
-        }
-
-        public string ReturnKeyID()
-        {
-            //System.Diagnostics.Debug.WriteLine(KeyID);
-            return KeyID;
         }
     }
 }

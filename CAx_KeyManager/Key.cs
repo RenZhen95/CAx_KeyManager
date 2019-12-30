@@ -18,14 +18,21 @@ namespace CAx_KeyManager
         // Constructor taking user input arguments 
         public Key(string _owner, string _roomID, string _keyID)
         {
-            // Assigning the user input string (owner name) to KeyOwnerName
-            KeyOwnerName = _owner;
+            if (String.IsNullOrEmpty(_keyID))
+            {
+                return;
+            }
+            else
+            {
+                // Assigning the user input string (owner name) to KeyOwnerName
+                KeyOwnerName = _owner;
 
-            // Assigning the user input string (roomID) to KeyRoomID
-            KeyRoomID = _roomID;
+                // Assigning the user input string (roomID) to KeyRoomID
+                KeyRoomID = _roomID;
 
-            // Assigning the user input string (keyID) to KeyID
-            KeyID = _keyID;
+                // Assigning the user input string (keyID) to KeyID
+                KeyID = _keyID;
+            }
         }
 
         // Getters and setters for the key attributes
