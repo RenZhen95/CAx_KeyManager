@@ -32,13 +32,13 @@
             this.RoomID_Label = new System.Windows.Forms.Label();
             this.Owner_Input = new System.Windows.Forms.TextBox();
             this.RoomID_Input = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DataGrid_Key = new System.Windows.Forms.DataGridView();
             this.Owner_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RoomID_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddName_Button = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Key)).BeginInit();
             this.SuspendLayout();
             // 
             // Owner_Label
@@ -73,17 +73,17 @@
             this.RoomID_Input.Size = new System.Drawing.Size(100, 20);
             this.RoomID_Input.TabIndex = 3;
             // 
-            // dataGridView1
+            // DataGrid_Key
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DataGrid_Key.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGrid_Key.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Owner_Column,
             this.ID_Column,
             this.RoomID_Column});
-            this.dataGridView1.Location = new System.Drawing.Point(1, 85);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(340, 233);
-            this.dataGridView1.TabIndex = 4;
+            this.DataGrid_Key.Location = new System.Drawing.Point(1, 85);
+            this.DataGrid_Key.Name = "DataGrid_Key";
+            this.DataGrid_Key.Size = new System.Drawing.Size(340, 233);
+            this.DataGrid_Key.TabIndex = 4;
             // 
             // Owner_Column
             // 
@@ -129,14 +129,14 @@
             this.ClientSize = new System.Drawing.Size(344, 330);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.AddName_Button);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DataGrid_Key);
             this.Controls.Add(this.RoomID_Input);
             this.Controls.Add(this.Owner_Input);
             this.Controls.Add(this.RoomID_Label);
             this.Controls.Add(this.Owner_Label);
             this.Name = "Form1";
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Key)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,7 +148,7 @@
         private System.Windows.Forms.Label RoomID_Label;
         private System.Windows.Forms.TextBox Owner_Input;
         private System.Windows.Forms.TextBox RoomID_Input;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DataGrid_Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Owner_Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Column;
         private System.Windows.Forms.DataGridViewTextBoxColumn RoomID_Column;

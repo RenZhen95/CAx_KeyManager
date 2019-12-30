@@ -6,34 +6,45 @@ using System.Threading.Tasks;
 
 namespace CAx_KeyManager
 {
-    class Key
+    public class Key
     {
-        public string Key_OwnerName;
-        public string Key_RoomID;
-        public string Suffix_Name;
-        
-        public Key(string _owner, string _room)
+        private string ownerName;
+        private string roomID;
+        private string keyID;
+
+        // Null constructor
+        public Key() { }
+
+        // Constructor taking user input arguments 
+        public Key(string _owner, string _roomID, string _keyID)
         {
-            Key_OwnerName = _owner;
-            Key_RoomID = _room;
-            
+            // Assigning the user input string (owner name) to KeyOwnerName
+            KeyOwnerName = _owner;
+
+            // Assigning the user input string (roomID) to KeyRoomID
+            KeyRoomID = _roomID;
+
+            // Assigning the user input string (keyID) to KeyID
+            KeyID = _keyID;
         }
 
-        static string Get_SuffixName(string _name)
+        // Getters and setters for the key attributes
+        public string KeyOwnerName
         {
-            string Modified_SuffixName;
-            foreach (char c in _name)
-            {
-                switch (c)
-                {
-                    case a:
-                        Key_OwnerName
+            get { return ownerName; }
+            set { ownerName = value; }
+        }
 
+        public string KeyRoomID
+        {
+            get { return roomID; }
+            set { roomID = value; }
+        }
 
-                }
-            }
-
-            return Modified_SuffixName;
+        public string KeyID
+        {
+            get { return keyID; }
+            set { keyID = value; }
         }
     }
 }
