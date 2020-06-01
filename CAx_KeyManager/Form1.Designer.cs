@@ -33,9 +33,6 @@
             this.Owner_Input = new System.Windows.Forms.TextBox();
             this.RoomID_Input = new System.Windows.Forms.TextBox();
             this.DataGrid_Key = new System.Windows.Forms.DataGridView();
-            this.Owner_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RoomID_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddName_Button = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Key)).BeginInit();
@@ -76,32 +73,10 @@
             // DataGrid_Key
             // 
             this.DataGrid_Key.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGrid_Key.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Owner_Column,
-            this.ID_Column,
-            this.RoomID_Column});
             this.DataGrid_Key.Location = new System.Drawing.Point(1, 85);
             this.DataGrid_Key.Name = "DataGrid_Key";
             this.DataGrid_Key.Size = new System.Drawing.Size(340, 233);
             this.DataGrid_Key.TabIndex = 4;
-            // 
-            // Owner_Column
-            // 
-            this.Owner_Column.HeaderText = "Owner";
-            this.Owner_Column.Name = "Owner_Column";
-            this.Owner_Column.ReadOnly = true;
-            // 
-            // ID_Column
-            // 
-            this.ID_Column.HeaderText = "ID";
-            this.ID_Column.Name = "ID_Column";
-            this.ID_Column.ReadOnly = true;
-            // 
-            // RoomID_Column
-            // 
-            this.RoomID_Column.HeaderText = "Room ID";
-            this.RoomID_Column.Name = "RoomID_Column";
-            this.RoomID_Column.ReadOnly = true;
             // 
             // AddName_Button
             // 
@@ -150,9 +125,6 @@
         private System.Windows.Forms.TextBox Owner_Input;
         private System.Windows.Forms.TextBox RoomID_Input;
         private System.Windows.Forms.DataGridView DataGrid_Key;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Owner_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RoomID_Column;
         private System.Windows.Forms.Button AddName_Button;
         private System.Windows.Forms.Button ClearButton;
     }
