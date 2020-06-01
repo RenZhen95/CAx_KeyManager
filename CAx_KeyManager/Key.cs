@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CAx_KeyManager
 {
     public class Key
     {
+        // Public fields
+        public string KeyOwnerName { get; set; }
+        public string KeyRoomID { get; set; }
+        public string KeyID { get; set; }
+
         private string ownerName;
         private string roomID;
         private string keyID;
@@ -33,25 +34,6 @@ namespace CAx_KeyManager
                 // Assigning the user input string (keyID) to KeyID
                 KeyID = _keyID;
             }
-        }
-
-        // Getters and setters for the key attributes
-        public string KeyOwnerName
-        {
-            get { return ownerName; }
-            set { ownerName = value; }
-        }
-
-        public string KeyRoomID
-        {
-            get { return roomID; }
-            set { roomID = value; }
-        }
-
-        public string KeyID
-        {
-            get { return keyID; }
-            set { keyID = value; }
         }
     }
 }
