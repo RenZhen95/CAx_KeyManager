@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CAx_KeyManager
 {
@@ -10,10 +11,12 @@ namespace CAx_KeyManager
         public int ID { get; set; }
         // ID of the Room
         public string RoomID { get; set; }
-        // We would also be storing an Owner Table in the database
-        public Owner Owner { get; set; }
         // Unique KeyID
         public string UniqueID { get; set; }
+
+        // One (Owner) to Many (Key) relationship
+        public int OwnerID { get; set; }
+        public Owner Owner { get; set; }
 
         // Null constructor
         public Key() { }
@@ -21,8 +24,8 @@ namespace CAx_KeyManager
         // Constructor taking user input arguments 
         public Key(Owner _owner, string _roomID)
         {
-            Owner   = _owner;
-            RoomID  = _roomID;
+            Owner = _owner;
+            RoomID   = _roomID;
 
             string modifiedName = Generate_SuffixName(Owner.Name);
             UniqueID = GenerateID(modifiedName);

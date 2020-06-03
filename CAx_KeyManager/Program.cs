@@ -53,6 +53,13 @@ namespace CAx_KeyManager
                 // First converting the Owners Table to a list then adding it to DataManager.BindingOwnerList
                 List<Owner> _owners = _context.Owners.ToList();
 
+                // Remove duplicated names
+                HashSet<Owner> ownerSet = new HashSet<Owner>();
+                foreach (Owner ownerElement in _owners)
+                {
+                    if (!ownerElement.Name)
+                }
+
                 foreach (Owner _owner in _owners)
                 {
                     DataManager.AddOwnerFromDB(_owner);
@@ -64,6 +71,7 @@ namespace CAx_KeyManager
         // Updating data in database based on changes made to the DataGrid
         public static void UpdateDatabase(Key _key)
         {
+            Debug.WriteLine("Database has been updated!!!!!!");
             using (DatabaseContext _context = new DatabaseContext())
             {
                 // First look for the entity in database
@@ -108,18 +116,6 @@ namespace CAx_KeyManager
                 Key _entity = _context.Keys.Find(_id);
                 if (_entity == null)
                     MessageBox.Show($"The entity with the '{_id}' cannot be found!");
-
-                return _entity;
-            }
-        }
-        // For the given ID, return the corresponding Owner
-        private static Owner findOwnerInDatabase(int _id)
-        {
-            using (DatabaseContext _context = new DatabaseContext())
-            {
-                Owner _entity = _context.Owners.Find(_id);
-                if (_entity == null)
-                    MessageBox.Show($"The owner with the '{_id}' cannot be found!");
 
                 return _entity;
             }

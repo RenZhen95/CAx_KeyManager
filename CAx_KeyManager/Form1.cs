@@ -28,13 +28,13 @@ namespace CAx_KeyManager
             // Binds the BindingKeyList to the DataGridView
             DataGrid_Key.DataSource = DataManager.BindingKeyList;
 
-            // We wanna hide the 3rd column, as it corresponds to the Owner business object related to the Key
-            DataGrid_Key.Columns[2].Visible = false;
-
             // Total width of the DataGridView = 300
             DataGrid_Key.Columns[0].Width = 30;
             DataGrid_Key.Columns[1].Width = 135;
-            DataGrid_Key.Columns[3].Width = 135;
+            DataGrid_Key.Columns[2].Width = 135;
+
+            // Hiding the last column
+            DataGrid_Key.Columns[3].Visible = false;
         }
         
         // Add Key
@@ -97,7 +97,7 @@ namespace CAx_KeyManager
                     MessageBox.Show("The owner already exist!");
                     return;
                 }
-                Debug.WriteLine(ownerName);
+                Debug.WriteLine($"{ownerName} has been added!");
                 DataManager.AddOwnerFromUI(ownerName);
                 clearInputs();
             }
@@ -111,6 +111,8 @@ namespace CAx_KeyManager
         // If the DataGrid has been changed, obviously the database should also be updated
         private void DataGrid_Key_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            Debug.WriteLine("SOMETHING HAS BEEN CHANGED!!!!!");
+
             // Accessing the key that has been changed in the datagrid, contained in the BindingKeyList
             Key changedKey = DataManager.BindingKeyList[e.RowIndex];
 
