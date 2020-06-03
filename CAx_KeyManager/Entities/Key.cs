@@ -1,27 +1,31 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace CAx_KeyManager
 {
     public class Key
     {
         // ID of the Key itself
-        public string ID { get; }
-        // The name of the owner
-        public string Owner { get; set; }
+        [Key]
+        public int ID { get; set; }
         // ID of the Room
         public string RoomID { get; set; }
+        // We would also be storing an Owner Table in the database
+        public Owner Owner { get; set; }
+        // Unique KeyID
+        public string UniqueID { get; set; }
 
         // Null constructor
         public Key() { }
 
         // Constructor taking user input arguments 
-        public Key(string _owner, string _roomID)
+        public Key(Owner _owner, string _roomID)
         {
             Owner   = _owner;
             RoomID  = _roomID;
 
-            string modifiedName = Generate_SuffixName(Owner);
-            ID = GenerateID(modifiedName);
+            string modifiedName = Generate_SuffixName(Owner.Name);
+            UniqueID = GenerateID(modifiedName);
         }
 
         // Method to modify the owner name, remove all vowels
