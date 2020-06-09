@@ -10,8 +10,6 @@ namespace CAx_KeyManager
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public ICollection<Key> Keys { get; set; }
-
         public Owner() { }
     }
 }

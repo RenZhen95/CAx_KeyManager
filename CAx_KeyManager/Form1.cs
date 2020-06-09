@@ -19,7 +19,7 @@ namespace CAx_KeyManager
                 // Read data from database
                 Program.ReadFromDatabase();
             }
-            catch (ModelValidationException e) { }
+            catch (ModelValidationException e) { MessageBox.Show(e.ToString()); }
 
             OwnerDropDown.DataSource = DataManager.BindingOwnerList;
             // Remember that Owner has two properties : "ID" and "Name"
@@ -45,7 +45,7 @@ namespace CAx_KeyManager
             // If the user entered empty strings, simply return
             if (string.IsNullOrEmpty(RoomID)) { return; }
 
-            Owner selectedOwner = OwnerDropDown.SelectedItem as Owner;
+            Owner selectedOwner = (Owner)OwnerDropDown.SelectedItem;
             if (selectedOwner == null)
             {
                 // If user hasn't selected an owner

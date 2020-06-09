@@ -54,11 +54,11 @@ namespace CAx_KeyManager
                 List<Owner> _owners = _context.Owners.ToList();
 
                 // Remove duplicated names
-                HashSet<Owner> ownerSet = new HashSet<Owner>();
-                foreach (Owner ownerElement in _owners)
-                {
-                    if (!ownerElement.Name)
-                }
+                //HashSet<Owner> ownerSet = new HashSet<Owner>();
+                //foreach (Owner ownerElement in _owners)
+                //{
+                //    if (!ownerElement.Name)
+                //}
 
                 foreach (Owner _owner in _owners)
                 {

@@ -77,7 +77,6 @@ namespace CAx_KeyManager
             this.TextBox_Student.MaxLength = 32767;
             this.TextBox_Student.Name = "TextBox_Student";
             this.TextBox_Student.PasswordChar = '\0';
-            this.TextBox_Student.PromptText = "Enter Last Name";
             this.TextBox_Student.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.TextBox_Student.SelectedText = "";
             this.TextBox_Student.SelectionLength = 0;
@@ -122,7 +121,6 @@ namespace CAx_KeyManager
             this.RoomID_Input.MaxLength = 32767;
             this.RoomID_Input.Name = "RoomID_Input";
             this.RoomID_Input.PasswordChar = '\0';
-            this.RoomID_Input.PromptText = "Enter Room Name";
             this.RoomID_Input.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.RoomID_Input.SelectedText = "";
             this.RoomID_Input.SelectionLength = 0;
