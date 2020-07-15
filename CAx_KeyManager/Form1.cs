@@ -29,12 +29,14 @@ namespace CAx_KeyManager
             DataGrid_Key.DataSource = DataManager.BindingKeyList;
 
             // Total width of the DataGridView = 300
-            DataGrid_Key.Columns[0].Width = 30;
-            DataGrid_Key.Columns[1].Width = 135;
-            DataGrid_Key.Columns[2].Width = 135;
+            DataGrid_Key.Columns[0].Width = 40;
+            DataGrid_Key.Columns[1].Width = 75;
+            DataGrid_Key.Columns[2].Width = 100;
+            DataGrid_Key.Columns[4].Width = 100;
 
-            // Hiding the last column
+            // Hiding the fourth and sixth column
             DataGrid_Key.Columns[3].Visible = false;
+            DataGrid_Key.Columns[5].Visible = false;
         }
         
         // Add Key
@@ -54,7 +56,7 @@ namespace CAx_KeyManager
             }
             else
             {
-                if (DataManager.BindingKeyList.ToList().Any(x => x.RoomID == RoomID && x.Owner.Name == selectedOwner.Name))
+                if (DataManager.BindingKeyList.ToList().Any(x => x.RoomID == RoomID && x.OwnerID == selectedOwner.OwnerID))
                 {
                     // If the key has already been added
                     MessageBox.Show("The key has already been added");

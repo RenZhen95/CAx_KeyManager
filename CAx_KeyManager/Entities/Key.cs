@@ -5,11 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CAx_KeyManager
 {
+    /// <summary>
+    /// This is the secondary relation
+    /// </summary>
     public class Key
     {
-        // ID of the Key itself
-        [Key]
-        public int ID { get; set; }
+        public int KeyID { get; set; }
         // ID of the Room
         public string RoomID { get; set; }
         // Unique KeyID
@@ -17,6 +18,7 @@ namespace CAx_KeyManager
 
         // One (Owner) to Many (Key) relationship
         public int OwnerID { get; set; }
+        public string OwnerName { get; set; }
         public Owner Owner { get; set; }
 
         // Null constructor
@@ -25,10 +27,11 @@ namespace CAx_KeyManager
         // Constructor taking user input arguments 
         public Key(Owner _owner, string _roomID)
         {
-            Owner = _owner;
-            RoomID   = _roomID;
+            OwnerID   = _owner.OwnerID;
+            OwnerName = _owner.Name;
+            RoomID    = _roomID;
 
-            string modifiedName = Generate_SuffixName(Owner.Name);
+            string modifiedName = Generate_SuffixName(_owner.Name);
             UniqueID = GenerateID(modifiedName);
         }
 

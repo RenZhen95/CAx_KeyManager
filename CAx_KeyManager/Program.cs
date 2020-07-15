@@ -19,11 +19,21 @@ namespace CAx_KeyManager
             Application.Run(new Form1());
         }
 
-        // Add created key by user into the Keys Table
-        public static void CreateInDatabase(Key _key)
+        // Add created key by user into the Owner ICollection Keys container
+        public static void CreateInDatabase(Key _key, Owner _selectedOwner)
         {
+            // Add the created key first to the Keys List in Owner
+            _selectedOwner.Keys.Add(_key);
+            
             using (DatabaseContext _context = new DatabaseContext())
             {
+                // First save the changes made to the Owner. Mark as "changed", so that the changes can be made when saving the database
+                Owner _entity = findOwnerInDatabase(_selectedOwner.OwnerID);
+                _context.Entry(_entity).State = System.Data.Entity.EntityState.Modified;
+                _context.SaveChanges();
+
+                //_context.SaveChanges();
+                // Adding the key to the context
                 _context.Keys.Add(_key);
                 _context.SaveChanges();
             }
@@ -53,13 +63,6 @@ namespace CAx_KeyManager
                 // First converting the Owners Table to a list then adding it to DataManager.BindingOwnerList
                 List<Owner> _owners = _context.Owners.ToList();
 
-                // Remove duplicated names
-                //HashSet<Owner> ownerSet = new HashSet<Owner>();
-                //foreach (Owner ownerElement in _owners)
-                //{
-                //    if (!ownerElement.Name)
-                //}
-
                 foreach (Owner _owner in _owners)
                 {
                     DataManager.AddOwnerFromDB(_owner);
@@ -75,12 +78,12 @@ namespace CAx_KeyManager
             using (DatabaseContext _context = new DatabaseContext())
             {
                 // First look for the entity in database
-                Key _entity = findKeyInDatabase(_key.ID);
+                Key _entity = findKeyInDatabase(_key.KeyID);
                 if (_entity != null)
                 {
                     // Updating the modified key object
-                    _entity.Owner  = _key.Owner;
-                    _entity.RoomID = _key.RoomID;
+                    _entity.OwnerID = _key.OwnerID;
+                    _entity.RoomID  = _key.RoomID;
 
                     // Mark as "changed", so that the changes can be made when saving the database 
                     _context.Entry(_entity).State = System.Data.Entity.EntityState.Modified;
@@ -94,7 +97,7 @@ namespace CAx_KeyManager
         {
             using (DatabaseContext _context = new DatabaseContext())
             {
-                Key _entity = findKeyInDatabase(_key.ID);
+                Key _entity = findKeyInDatabase(_key.KeyID);
                 if (_entity != null)
                 {
                     _context.Entry(_entity).State = System.Data.Entity.EntityState.Deleted;
@@ -102,7 +105,7 @@ namespace CAx_KeyManager
                 }
                 else
                 {
-                    MessageBox.Show($"The key with the ID '{_key.ID}' cannot be deleted!");
+                    MessageBox.Show($"The key with the ID '{_key.KeyID}' cannot be deleted!");
                 }
                 _context.SaveChanges();
             }
@@ -114,6 +117,18 @@ namespace CAx_KeyManager
             using (DatabaseContext _context = new DatabaseContext())
             {
                 Key _entity = _context.Keys.Find(_id);
+                if (_entity == null)
+                    MessageBox.Show($"The entity with the '{_id}' cannot be found!");
+
+                return _entity;
+            }
+        }
+        // For the given ID, return the corresponding Owner
+        private static Owner findOwnerInDatabase(int _id)
+        {
+            using (DatabaseContext _context = new DatabaseContext())
+            {
+                Owner _entity = _context.Owners.Find(_id);
                 if (_entity == null)
                     MessageBox.Show($"The entity with the '{_id}' cannot be found!");
 

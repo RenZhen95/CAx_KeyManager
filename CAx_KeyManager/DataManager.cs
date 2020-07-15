@@ -22,7 +22,7 @@ namespace CAx_KeyManager
             BindingKeyList.Add(newKey);
 
             // Add the key to the database
-            Program.CreateInDatabase(newKey);
+            Program.CreateInDatabase(newKey, _owner);
         }
         public static void DeleteKey(Key _removedKey)
         {
